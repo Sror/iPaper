@@ -11,8 +11,9 @@
 @interface ANViewController : UIViewController
 
 @property (strong, nonatomic) UITableView *firstImage;
-@property (retain, nonatomic) UILabel *imageTitle;
+
 @property (strong, nonatomic) UIButton *addLinkButton;
+@property (strong, nonatomic) UISegmentedControl *toolBarSegmentControl;
 
 -(UIView *) navigationTitleView;
 

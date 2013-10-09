@@ -31,14 +31,15 @@
     CGRect navigationViewSizeModifiedHeight = CGRectMake(self.navigationController.view.frame.origin.x, self.navigationController.view.frame.origin.y, self.navigationController.view.frame.size.width, self.navigationController.view.frame.size.height-labelWidth);
     self.firstImage = [[UITableView alloc] initWithFrame:navigationViewSizeModifiedHeight];
     self.firstImage.backgroundColor = [UIColor colorWithRed:1.0 green:160/255.f blue:50/255.f alpha:1.0];
-    self.firstImage.separatorColor = [UIColor whiteColor];
+    self.firstImage.separatorColor = [UIColor blackColor];
     
     CGRect navigationToolbarSize = CGRectMake(self.navigationController.toolbar.frame.origin.x, self.navigationController.toolbar.frame.origin.y, self.navigationController.toolbar.frame.size.width, self.navigationController.toolbar.frame.size.height);
-    self.imageTitle = [[UILabel alloc] initWithFrame:navigationToolbarSize];
-    self.imageTitle.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    self.toolBarSegmentControl = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:nil]];
+    self.toolBarSegmentControl.frame = navigationToolbarSize;
+    
     
     [self.view addSubview:self.firstImage];
-    [self.view addSubview:self.imageTitle];
+    [self.view addSubview:self.toolBarSegmentControl];
 }
 
 - (void)didReceiveMemoryWarning
@@ -49,10 +50,11 @@
 
 -(void) addRSS
 {
-    self.navigationItem.titleView = [self navigationTitleViewAddRSS];
+//    self.navigationItem.titleView = [self navigationTitleViewAddRSS];
     ANRssFeed *feed = [[ANRssFeed alloc] init];
     [feed parseFeed:@"http://syndication.indianexpress.com/rss/latest-news.xml"];
-    
+//http://www.thehindu.com/news/international/world/?service=rss
+//    http://syndication.indianexpress.com/rss/latest-news.xml
 }
 
 # pragma mark Table Protocols
