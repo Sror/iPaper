@@ -11,9 +11,10 @@
 @interface ANViewController : UIViewController
 
 @property (strong, nonatomic) UITableView *table;
-
 @property (strong, nonatomic) UIButton *showToolBarButton;
-@property (strong, nonatomic) UISegmentedControl *toolBarSegmentControl;
+@property (strong, nonatomic) UITabBar *tabBarOnNavigationToolbar;
+
+
 
 -(UIView *) navigationTitleView;
 

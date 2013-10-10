@@ -26,13 +26,14 @@
     [super viewDidLoad];
     self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:240/255.f green:240/255.f blue:240/255.f alpha:1.0];
     self.navigationItem.titleView = [self navigationTitleView];
-    self.navigationController.toolbarHidden = NO;
-    [self setToolBarSegmentControl:[self createSegmentedControl]];
+    self.navigationController.toolbarHidden = YES;
+
     
     self.table = [self createTable];
+    self.tabBarOnNavigationToolbar = [self createTabBarControl];
     
     [self.view addSubview:self.table];
-    [self.navigationController.toolbar addSubview:self.toolBarSegmentControl];
+    [self.view addSubview:self.tabBarOnNavigationToolbar];
 }
 
 - (void)didReceiveMemoryWarning
@@ -55,15 +56,17 @@
     return createdTable;
 }
 
--(UISegmentedControl *) createSegmentedControl
+-(UITabBar *) createTabBarControl
 {
-//    CGRect navigationToolbarSize = CGRectMake(self.navigationController.toolbar.frame.origin.x, self.navigationController.toolbar.frame.origin.y, self.navigationController.toolbar.frame.size.width, self.navigationController.toolbar.frame.size.height);
+    CGRect navigationToolbarSize = CGRectMake(self.navigationController.toolbar.frame.origin.x, self.navigationController.toolbar.frame.origin.y, self.navigationController.toolbar.frame.size.width, self.navigationController.toolbar.frame.size.height);
     
-    UISegmentedControl *createdSegment = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"One", @"Two", @"Three",nil]];
-    createdSegment.tintColor = [UIColor blackColor];
-//    createdSegment.frame = navigationToolbarSize;
+    UITabBarItem *firstItem = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemRecents tag:0];
+    UITabBarItem *secondItem = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemRecents tag:1];
     
-    return createdSegment;
+    UITabBar *createdTabBar = [[UITabBar alloc] initWithFrame:navigationToolbarSize];
+    [createdTabBar setItems:[NSArray arrayWithObjects:firstItem, secondItem, nil]];
+    
+    return createdTabBar;
 }
 
 
@@ -111,7 +114,7 @@
     UIView *containerView = [[UIView alloc] initWithFrame:navigationBarSize];
     
     
-    UIImage *showToolBarImage = [UIImage imageNamed:@"AddLink"];
+    UIImage *showToolBarImage = [UIImage imageNamed:@"showToolBarImage"];
     self.showToolBarButton = [UIButton buttonWithType:UIButtonTypeCustom];
     
        

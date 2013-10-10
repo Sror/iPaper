@@ -21,7 +21,7 @@
 		29901D6E1805529000E51789 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29901D501805528F00E51789 /* UIKit.framework */; };
 		29901D761805529000E51789 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 29901D741805529000E51789 /* InfoPlist.strings */; };
 		29901D781805529000E51789 /* iPaperTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 29901D771805529000E51789 /* iPaperTests.m */; };
-		29901D831805538200E51789 /* AddLink.png in Resources */ = {isa = PBXBuildFile; fileRef = 29901D811805538200E51789 /* AddLink.png */; };
+		29901D831805538200E51789 /* showToolBarImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 29901D811805538200E51789 /* showToolBarImage.png */; };
 		29901D841805538200E51789 /* rssLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 29901D821805538200E51789 /* rssLogo.png */; };
 		299AAA2E18056D6600D63A9B /* ANRssFeed.m in Sources */ = {isa = PBXBuildFile; fileRef = 299AAA2D18056D6600D63A9B /* ANRssFeed.m */; };
 /* End PBXBuildFile section */
@@ -56,7 +56,7 @@
 		29901D731805529000E51789 /* iPaperTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iPaperTests-Info.plist"; sourceTree = "<group>"; };
 		29901D751805529000E51789 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		29901D771805529000E51789 /* iPaperTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iPaperTests.m; sourceTree = "<group>"; };
-		29901D811805538200E51789 /* AddLink.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AddLink.png; sourceTree = "<group>"; };
+		29901D811805538200E51789 /* showToolBarImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = showToolBarImage.png; sourceTree = "<group>"; };
 		29901D821805538200E51789 /* rssLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rssLogo.png; sourceTree = "<group>"; };
 		299AAA2C18056D6600D63A9B /* ANRssFeed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANRssFeed.h; sourceTree = "<group>"; };
 		299AAA2D18056D6600D63A9B /* ANRssFeed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANRssFeed.m; sourceTree = "<group>"; };
@@ -135,7 +135,7 @@
 		29901D531805528F00E51789 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				29901D811805538200E51789 /* AddLink.png */,
+				29901D811805538200E51789 /* showToolBarImage.png */,
 				29901D821805538200E51789 /* rssLogo.png */,
 				29901D541805528F00E51789 /* iPaper-Info.plist */,
 				29901D551805528F00E51789 /* InfoPlist.strings */,
@@ -242,7 +242,7 @@
 			files = (
 				29901D841805538200E51789 /* rssLogo.png in Resources */,
 				29901D651805528F00E51789 /* Images.xcassets in Resources */,
-				29901D831805538200E51789 /* AddLink.png in Resources */,
+				29901D831805538200E51789 /* showToolBarImage.png in Resources */,
 				29901D571805528F00E51789 /* InfoPlist.strings in Resources */,
 				29901D601805528F00E51789 /* Main.storyboard in Resources */,
 			);
