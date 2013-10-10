@@ -24,6 +24,8 @@
 		29901D831805538200E51789 /* showToolBarImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 29901D811805538200E51789 /* showToolBarImage.png */; };
 		29901D841805538200E51789 /* rssLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 29901D821805538200E51789 /* rssLogo.png */; };
 		299AAA2E18056D6600D63A9B /* ANRssFeed.m in Sources */ = {isa = PBXBuildFile; fileRef = 299AAA2D18056D6600D63A9B /* ANRssFeed.m */; };
+		29C6068E1806CA6700335ABF /* ANNewsPaperIIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 29C6068D1806CA6700335ABF /* ANNewsPaperIIViewController.m */; };
+		29C606901806D81D00335ABF /* newsPaper.png in Resources */ = {isa = PBXBuildFile; fileRef = 29C6068F1806D81D00335ABF /* newsPaper.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +62,9 @@
 		29901D821805538200E51789 /* rssLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rssLogo.png; sourceTree = "<group>"; };
 		299AAA2C18056D6600D63A9B /* ANRssFeed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANRssFeed.h; sourceTree = "<group>"; };
 		299AAA2D18056D6600D63A9B /* ANRssFeed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANRssFeed.m; sourceTree = "<group>"; };
+		29C6068C1806CA6700335ABF /* ANNewsPaperIIViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANNewsPaperIIViewController.h; sourceTree = "<group>"; };
+		29C6068D1806CA6700335ABF /* ANNewsPaperIIViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANNewsPaperIIViewController.m; sourceTree = "<group>"; };
+		29C6068F1806D81D00335ABF /* newsPaper.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = newsPaper.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +129,8 @@
 				29901D5E1805528F00E51789 /* Main.storyboard */,
 				29901D611805528F00E51789 /* ANViewController.h */,
 				29901D621805528F00E51789 /* ANViewController.m */,
+				29C6068C1806CA6700335ABF /* ANNewsPaperIIViewController.h */,
+				29C6068D1806CA6700335ABF /* ANNewsPaperIIViewController.m */,
 				299AAA2C18056D6600D63A9B /* ANRssFeed.h */,
 				299AAA2D18056D6600D63A9B /* ANRssFeed.m */,
 				29901D641805528F00E51789 /* Images.xcassets */,
@@ -135,6 +142,7 @@
 		29901D531805528F00E51789 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				29C6068F1806D81D00335ABF /* newsPaper.png */,
 				29901D811805538200E51789 /* showToolBarImage.png */,
 				29901D821805538200E51789 /* rssLogo.png */,
 				29901D541805528F00E51789 /* iPaper-Info.plist */,
@@ -245,6 +253,7 @@
 				29901D831805538200E51789 /* showToolBarImage.png in Resources */,
 				29901D571805528F00E51789 /* InfoPlist.strings in Resources */,
 				29901D601805528F00E51789 /* Main.storyboard in Resources */,
+				29C606901806D81D00335ABF /* newsPaper.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,6 +276,7 @@
 				299AAA2E18056D6600D63A9B /* ANRssFeed.m in Sources */,
 				29901D631805528F00E51789 /* ANViewController.m in Sources */,
 				29901D5D1805528F00E51789 /* ANAppDelegate.m in Sources */,
+				29C6068E1806CA6700335ABF /* ANNewsPaperIIViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

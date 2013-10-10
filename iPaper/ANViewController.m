@@ -24,16 +24,22 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    
+    self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Indian Express" image:[UIImage imageNamed:@"newsPaper"] selectedImage:nil];
+    
+    
+    
     self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:240/255.f green:240/255.f blue:240/255.f alpha:1.0];
     self.navigationItem.titleView = [self navigationTitleView];
     self.navigationController.toolbarHidden = YES;
 
     
     self.table = [self createTable];
-    self.tabBarOnNavigationToolbar = [self createTabBarControl];
+//    self.tabBarOnNavigationToolbar = [self createTabBarControl];
     
     [self.view addSubview:self.table];
-    [self.view addSubview:self.tabBarOnNavigationToolbar];
+//    [self.view addSubview:self.tabBarOnNavigationToolbar];
 }
 
 - (void)didReceiveMemoryWarning

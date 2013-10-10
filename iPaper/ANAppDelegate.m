@@ -8,6 +8,7 @@
 
 #import "ANAppDelegate.h"
 #import "ANViewController.h"
+#import "ANNewsPaperIIViewController.h"
 
 @implementation ANAppDelegate
 
@@ -15,11 +16,22 @@
 {
     // Override point for customization after application launch.
     
+    self.tabBarController = [[UITabBarController alloc] init];
+    self.tabBarController.tabBar.barTintColor = [UIColor blackColor];
+    
+    
     ANViewController *rootViewController = [[ANViewController alloc] init];
     UINavigationController *entryPointApp = [[UINavigationController alloc] initWithRootViewController:rootViewController];
-    entryPointApp.navigationBar.backgroundColor = [UIColor redColor];
+    entryPointApp.navigationBar.backgroundColor = [UIColor colorWithRed:0.95 green:0.45 blue:0.56 alpha:1.0];
     
-    self.window.rootViewController = entryPointApp;
+    ANNewsPaperIIViewController *newsPaperIIViewController = [[ANNewsPaperIIViewController alloc] init];
+    UINavigationController *entryPointAppII = [[UINavigationController alloc] initWithRootViewController:newsPaperIIViewController];
+    
+    self.tabBarController.viewControllers = [NSArray arrayWithObjects:entryPointApp, entryPointAppII, nil];
+    self.tabBarController.selectedViewController = entryPointApp;
+    
+    self.window.rootViewController = self.tabBarController;
+    self.window.tintColor = [UIColor whiteColor];
     
     [self.window makeKeyAndVisible];
     return YES;
