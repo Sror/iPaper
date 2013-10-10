@@ -27,19 +27,12 @@
     self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:240/255.f green:240/255.f blue:240/255.f alpha:1.0];
     self.navigationItem.titleView = [self navigationTitleView];
     self.navigationController.toolbarHidden = NO;
+    [self setToolBarSegmentControl:[self createSegmentedControl]];
     
-    CGRect navigationViewSizeModifiedHeight = CGRectMake(self.navigationController.view.frame.origin.x, self.navigationController.view.frame.origin.y, self.navigationController.view.frame.size.width, self.navigationController.view.frame.size.height-labelWidth);
-    self.firstImage = [[UITableView alloc] initWithFrame:navigationViewSizeModifiedHeight];
-    self.firstImage.backgroundColor = [UIColor colorWithRed:1.0 green:160/255.f blue:50/255.f alpha:1.0];
-    self.firstImage.separatorColor = [UIColor blackColor];
+    self.table = [self createTable];
     
-    CGRect navigationToolbarSize = CGRectMake(self.navigationController.toolbar.frame.origin.x, self.navigationController.toolbar.frame.origin.y, self.navigationController.toolbar.frame.size.width, self.navigationController.toolbar.frame.size.height);
-    self.toolBarSegmentControl = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:nil]];
-    self.toolBarSegmentControl.frame = navigationToolbarSize;
-    
-    
-    [self.view addSubview:self.firstImage];
-    [self.view addSubview:self.toolBarSegmentControl];
+    [self.view addSubview:self.table];
+    [self.navigationController.toolbar addSubview:self.toolBarSegmentControl];
 }
 
 - (void)didReceiveMemoryWarning
@@ -47,6 +40,34 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
+
+# pragma mark UI Design Methods
+
+-(UITableView *) createTable
+{
+    CGRect navigationViewSizeModifiedHeight = CGRectMake(self.navigationController.view.frame.origin.x, self.navigationController.view.frame.origin.y, self.navigationController.view.frame.size.width, self.navigationController.view.frame.size.height-labelWidth);
+    UITableView *createdTable = [[UITableView alloc] initWithFrame:navigationViewSizeModifiedHeight];
+    createdTable.backgroundColor = [UIColor colorWithRed:1.0 green:160/255.f blue:50/255.f alpha:1.0];
+    createdTable.separatorColor = [UIColor blackColor];
+    
+    return createdTable;
+}
+
+-(UISegmentedControl *) createSegmentedControl
+{
+//    CGRect navigationToolbarSize = CGRectMake(self.navigationController.toolbar.frame.origin.x, self.navigationController.toolbar.frame.origin.y, self.navigationController.toolbar.frame.size.width, self.navigationController.toolbar.frame.size.height);
+    
+    UISegmentedControl *createdSegment = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"One", @"Two", @"Three",nil]];
+    createdSegment.tintColor = [UIColor blackColor];
+//    createdSegment.frame = navigationToolbarSize;
+    
+    return createdSegment;
+}
+
+
+#pragma mark Dealing with RSS
 
 -(void) addRSS
 {
@@ -88,19 +109,18 @@
     CGRect navigationBarSize = CGRectMake(self.navigationController.navigationBar.frame.origin.x, self.navigationController.navigationBar.frame.origin.y, navBarWidth, navBarHeight);
     
     UIView *containerView = [[UIView alloc] initWithFrame:navigationBarSize];
-    //    containerView.backgroundColor = [UIColor greenColor];
     
-    UIImage *addLinkImage = [UIImage imageNamed:@"AddLink"];
-    self.addLinkButton = [UIButton buttonWithType:UIButtonTypeCustom];
     
-    //    addLinkButton.backgroundColor = [UIColor redColor];
+    UIImage *showToolBarImage = [UIImage imageNamed:@"AddLink"];
+    self.showToolBarButton = [UIButton buttonWithType:UIButtonTypeCustom];
     
-    CGFloat buttonY = (navBarHeight - addLinkImage.size.height)/2;
-    CGFloat buttonX = navBarWidth - (addLinkImage.size.width + buttonY*2);
-    CGFloat buttonWidth = addLinkImage.size.width;
-    CGFloat buttonHeight = addLinkImage.size.height;
-    [self.addLinkButton setFrame:CGRectMake(buttonX, buttonY, buttonWidth, buttonHeight)];
-    [self.addLinkButton setImage:addLinkImage forState:UIControlStateNormal];
+       
+    CGFloat buttonY = (navBarHeight - showToolBarImage.size.height)/2;
+    CGFloat buttonX = navBarWidth - (showToolBarImage.size.width + buttonY*2);
+    CGFloat buttonWidth = showToolBarImage.size.width;
+    CGFloat buttonHeight = showToolBarImage.size.height;
+    [self.showToolBarButton setFrame:CGRectMake(buttonX, buttonY, buttonWidth, buttonHeight)];
+    [self.showToolBarButton setImage:showToolBarImage forState:UIControlStateNormal];
     
     
     //     NSLog(@"Bar Size: %@ Frame: %@ Size:%@", NSStringFromCGRect(self.navigationController.navigationBar.frame), NSStringFromCGRect(addLinkButton.frame), NSStringFromCGSize(addLinkImage.size));
@@ -120,12 +140,12 @@
     [rssLogoView setImage:rssLogo];
     
     
-    [containerView addSubview:self.addLinkButton];
+    [containerView addSubview:self.showToolBarButton];
     [containerView addSubview:containerViewTitle];
     [containerView addSubview:rssLogoView];
     
     
-    [self.addLinkButton addTarget:self action:@selector(addRSS) forControlEvents:UIControlEventTouchUpInside];
+    [self.showToolBarButton addTarget:self action:@selector(addRSS) forControlEvents:UIControlEventTouchUpInside];
     
     return containerView;
 }
@@ -139,13 +159,13 @@
     
     UIView *containerView = [[UIView alloc] initWithFrame:navigationBarSize];
     
-    UITextField *addRSS = [[UITextField alloc] initWithFrame:CGRectMake(0, navBarHeight/4, navBarWidth - (self.addLinkButton.frame.size.width*1.5), navBarHeight/2)];
+    UITextField *addRSS = [[UITextField alloc] initWithFrame:CGRectMake(0, navBarHeight/4, navBarWidth - (self.showToolBarButton.frame.size.width*1.5), navBarHeight/2)];
     addRSS.backgroundColor = [UIColor whiteColor];
     addRSS.borderStyle = UITextBorderStyleRoundedRect;
     addRSS.placeholder = @"Enter the RSS link";
     
-    UIButton *addRssButton = [[UIButton alloc] initWithFrame:self.addLinkButton.frame];
-    [addRssButton setImage:self.addLinkButton.imageView.image forState:UIControlStateNormal];
+    UIButton *addRssButton = [[UIButton alloc] initWithFrame:self.showToolBarButton.frame];
+    [addRssButton setImage:self.showToolBarButton.imageView.image forState:UIControlStateNormal];
     
     [containerView addSubview:addRSS];
     [containerView addSubview:addRssButton];
