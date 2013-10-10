@@ -10,10 +10,12 @@
 
 @interface ANRssFeed ()
 {
+    BOOL flag;
+    int setArrayObjectFlag;
     NSXMLParser *parser;
     NSString *element;
-    BOOL flag;
     NSMutableArray *newsTable;
+    NSMutableDictionary *newsTableAttributes;
 }
 @end
 
@@ -25,7 +27,9 @@
     parser = [[NSXMLParser alloc] initWithContentsOfURL:url];
     [parser setDelegate:self];
     [parser setShouldResolveExternalEntities:NO];
-    [parser parse];  
+    [parser parse];
+    
+    
     
     return NULL;
 }
@@ -35,31 +39,65 @@
 - (void)parserDidStartDocument:(NSXMLParser *)parser
 {
     newsTable = [[NSMutableArray alloc] init];
+    newsTableAttributes = NULL;
 }
 
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict
 {
     element = elementName;
     
-    if([element isEqualToString:@"item"])
+    if([element isEqualToString:@"item"]) {
         flag = YES;
+    }
+    if(!newsTableAttributes && ([element isEqualToString:@"title"] | [element isEqualToString:@"link"] | [element isEqualToString:@"description"])) {
+        newsTableAttributes = [[NSMutableDictionary alloc] init];
+        setArrayObjectFlag = 0;
+    }
+    
 }
 
 - (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string
 {
-    if(flag && [element isEqualToString:@"title"])
-    NSLog(@"FoundChars: %@", string);
+    if (flag) {
+        
+        if ([element isEqualToString:@"title"]) {
+            [newsTableAttributes setObject:string forKey:@"title"];
+        }
+        if ([element isEqualToString:@"link"]) {
+            [newsTableAttributes setObject:string forKey:@"link"];
+        }
+        if ([element isEqualToString:@"description"]) {
+            [newsTableAttributes setObject:string forKey:@"description"];
+        }        
+    }
+    else {
     
+    
+    }
 }
+
 
 - (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName
 {
-    
     if([element isEqualToString:@"item"])
         flag = NO;
     
-//    NSLog(@"End: %@......... ", elementName);
+    if([element isEqualToString:@"title"] | [element isEqualToString:@"link"] | [element isEqualToString:@"description"]) {
+        
+        setArrayObjectFlag ++;
+        if(setArrayObjectFlag == 3) {
+            [newsTable addObject:newsTableAttributes];
+            newsTableAttributes = NULL;
+        }
+    }
 
+    element = nil;
+}
+
+
+- (void)parserDidEndDocument:(NSXMLParser *)parser
+{
+    NSLog(@"%@", newsTable);
     
 }
 

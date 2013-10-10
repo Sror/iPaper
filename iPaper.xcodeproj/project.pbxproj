@@ -131,8 +131,7 @@
 				29901D621805528F00E51789 /* ANViewController.m */,
 				29C6068C1806CA6700335ABF /* ANNewsPaperIIViewController.h */,
 				29C6068D1806CA6700335ABF /* ANNewsPaperIIViewController.m */,
-				299AAA2C18056D6600D63A9B /* ANRssFeed.h */,
-				299AAA2D18056D6600D63A9B /* ANRssFeed.m */,
+				29C606931806DF7900335ABF /* Parser ;) */,
 				29901D641805528F00E51789 /* Images.xcassets */,
 				29901D531805528F00E51789 /* Supporting Files */,
 			);
@@ -169,6 +168,15 @@
 				29901D741805529000E51789 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		29C606931806DF7900335ABF /* Parser ;) */ = {
+			isa = PBXGroup;
+			children = (
+				299AAA2C18056D6600D63A9B /* ANRssFeed.h */,
+				299AAA2D18056D6600D63A9B /* ANRssFeed.m */,
+			);
+			name = "Parser ;)";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

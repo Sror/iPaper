@@ -25,21 +25,16 @@
 {
     [super viewDidLoad];
     
-    
     self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Indian Express" image:[UIImage imageNamed:@"newsPaper"] selectedImage:nil];
-    
     
     
     self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:240/255.f green:240/255.f blue:240/255.f alpha:1.0];
     self.navigationItem.titleView = [self navigationTitleView];
     self.navigationController.toolbarHidden = YES;
-
     
     self.table = [self createTable];
-//    self.tabBarOnNavigationToolbar = [self createTabBarControl];
     
     [self.view addSubview:self.table];
-//    [self.view addSubview:self.tabBarOnNavigationToolbar];
 }
 
 - (void)didReceiveMemoryWarning
@@ -62,19 +57,6 @@
     return createdTable;
 }
 
--(UITabBar *) createTabBarControl
-{
-    CGRect navigationToolbarSize = CGRectMake(self.navigationController.toolbar.frame.origin.x, self.navigationController.toolbar.frame.origin.y, self.navigationController.toolbar.frame.size.width, self.navigationController.toolbar.frame.size.height);
-    
-    UITabBarItem *firstItem = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemRecents tag:0];
-    UITabBarItem *secondItem = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemRecents tag:1];
-    
-    UITabBar *createdTabBar = [[UITabBar alloc] initWithFrame:navigationToolbarSize];
-    [createdTabBar setItems:[NSArray arrayWithObjects:firstItem, secondItem, nil]];
-    
-    return createdTabBar;
-}
-
 
 #pragma mark Dealing with RSS
 
@@ -82,7 +64,7 @@
 {
 //    self.navigationItem.titleView = [self navigationTitleViewAddRSS];
     ANRssFeed *feed = [[ANRssFeed alloc] init];
-    [feed parseFeed:@"http://syndication.indianexpress.com/rss/latest-news.xml"];
+    [feed parseFeed:@"http://syndication.indianexpress.com/rss/723/sunday-stories.xml"];
 //http://www.thehindu.com/news/international/world/?service=rss
 //    http://syndication.indianexpress.com/rss/latest-news.xml
 }

@@ -7,6 +7,7 @@
 //
 
 #import "ANNewsPaperIIViewController.h"
+#import "ANViewController.h"
 
 @interface ANNewsPaperIIViewController ()
 
@@ -29,6 +30,8 @@
 	// Do any additional setup after loading the view.
     
     self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Next" image:[UIImage imageNamed:@"showToolBarImage"] selectedImage:nil];
+    
+    
 }
 
 - (void)didReceiveMemoryWarning
