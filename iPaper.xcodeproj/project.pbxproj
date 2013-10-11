@@ -21,11 +21,11 @@
 		29901D6E1805529000E51789 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29901D501805528F00E51789 /* UIKit.framework */; };
 		29901D761805529000E51789 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 29901D741805529000E51789 /* InfoPlist.strings */; };
 		29901D781805529000E51789 /* iPaperTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 29901D771805529000E51789 /* iPaperTests.m */; };
-		29901D831805538200E51789 /* showToolBarImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 29901D811805538200E51789 /* showToolBarImage.png */; };
 		29901D841805538200E51789 /* rssLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 29901D821805538200E51789 /* rssLogo.png */; };
 		299AAA2E18056D6600D63A9B /* ANRssFeed.m in Sources */ = {isa = PBXBuildFile; fileRef = 299AAA2D18056D6600D63A9B /* ANRssFeed.m */; };
 		29C6068E1806CA6700335ABF /* ANNewsPaperIIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 29C6068D1806CA6700335ABF /* ANNewsPaperIIViewController.m */; };
 		29C606901806D81D00335ABF /* newsPaper.png in Resources */ = {isa = PBXBuildFile; fileRef = 29C6068F1806D81D00335ABF /* newsPaper.png */; };
+		29EDD20D180804E000C2E614 /* ANViewListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 29EDD20C180804E000C2E614 /* ANViewListController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,13 +58,14 @@
 		29901D731805529000E51789 /* iPaperTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iPaperTests-Info.plist"; sourceTree = "<group>"; };
 		29901D751805529000E51789 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		29901D771805529000E51789 /* iPaperTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iPaperTests.m; sourceTree = "<group>"; };
-		29901D811805538200E51789 /* showToolBarImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = showToolBarImage.png; sourceTree = "<group>"; };
 		29901D821805538200E51789 /* rssLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rssLogo.png; sourceTree = "<group>"; };
 		299AAA2C18056D6600D63A9B /* ANRssFeed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANRssFeed.h; sourceTree = "<group>"; };
 		299AAA2D18056D6600D63A9B /* ANRssFeed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANRssFeed.m; sourceTree = "<group>"; };
 		29C6068C1806CA6700335ABF /* ANNewsPaperIIViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANNewsPaperIIViewController.h; sourceTree = "<group>"; };
 		29C6068D1806CA6700335ABF /* ANNewsPaperIIViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANNewsPaperIIViewController.m; sourceTree = "<group>"; };
 		29C6068F1806D81D00335ABF /* newsPaper.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = newsPaper.png; sourceTree = "<group>"; };
+		29EDD20B180804E000C2E614 /* ANViewListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANViewListController.h; sourceTree = "<group>"; };
+		29EDD20C180804E000C2E614 /* ANViewListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANViewListController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +130,8 @@
 				29901D5E1805528F00E51789 /* Main.storyboard */,
 				29901D611805528F00E51789 /* ANViewController.h */,
 				29901D621805528F00E51789 /* ANViewController.m */,
+				29EDD20B180804E000C2E614 /* ANViewListController.h */,
+				29EDD20C180804E000C2E614 /* ANViewListController.m */,
 				29C6068C1806CA6700335ABF /* ANNewsPaperIIViewController.h */,
 				29C6068D1806CA6700335ABF /* ANNewsPaperIIViewController.m */,
 				29C606931806DF7900335ABF /* Parser ;) */,
@@ -142,7 +145,6 @@
 			isa = PBXGroup;
 			children = (
 				29C6068F1806D81D00335ABF /* newsPaper.png */,
-				29901D811805538200E51789 /* showToolBarImage.png */,
 				29901D821805538200E51789 /* rssLogo.png */,
 				29901D541805528F00E51789 /* iPaper-Info.plist */,
 				29901D551805528F00E51789 /* InfoPlist.strings */,
@@ -258,7 +260,6 @@
 			files = (
 				29901D841805538200E51789 /* rssLogo.png in Resources */,
 				29901D651805528F00E51789 /* Images.xcassets in Resources */,
-				29901D831805538200E51789 /* showToolBarImage.png in Resources */,
 				29901D571805528F00E51789 /* InfoPlist.strings in Resources */,
 				29901D601805528F00E51789 /* Main.storyboard in Resources */,
 				29C606901806D81D00335ABF /* newsPaper.png in Resources */,
@@ -283,6 +284,7 @@
 				29901D591805528F00E51789 /* main.m in Sources */,
 				299AAA2E18056D6600D63A9B /* ANRssFeed.m in Sources */,
 				29901D631805528F00E51789 /* ANViewController.m in Sources */,
+				29EDD20D180804E000C2E614 /* ANViewListController.m in Sources */,
 				29901D5D1805528F00E51789 /* ANAppDelegate.m in Sources */,
 				29C6068E1806CA6700335ABF /* ANNewsPaperIIViewController.m in Sources */,
 			);

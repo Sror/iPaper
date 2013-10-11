@@ -27,12 +27,7 @@
     ANNewsPaperIIViewController *newsPaperIIViewController = [[ANNewsPaperIIViewController alloc] init];
     UINavigationController *entryPointAppII = [[UINavigationController alloc] initWithRootViewController:newsPaperIIViewController];
     
-    self.tabBarController.viewControllers = [NSArray arrayWithObjects:entryPointApp, entryPointAppII, nil];
-    
-    [(UITabBarItem *)[self.tabBarController.tabBar.items objectAtIndex:1] setImage:[UIImage imageNamed:@"showToolBarImage"]];
-    [(UITabBarItem *)[self.tabBarController.tabBar.items objectAtIndex:1] setTitle:@"Next"];
-    
-    
+    self.tabBarController.viewControllers = [NSArray arrayWithObjects:entryPointApp, entryPointAppII, nil];   
     self.tabBarController.selectedViewController = entryPointApp;
     
     self.window.rootViewController = self.tabBarController;

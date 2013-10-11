@@ -7,9 +7,9 @@
 //
 
 #import "ANViewController.h"
+#import "ANViewListController.h"
 #import "ANRssFeed.h"
 
-#define labelWidth 40
 #define kTitle @"iPaper"
 
 @interface ANViewController ()
@@ -39,7 +39,6 @@
     
     self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:240/255.f green:240/255.f blue:240/255.f alpha:1.0];
     self.navigationItem.titleView = [self navigationTitleView];
-//  self.navigationController.toolbarHidden = YES;
     
     self.table = [self createTable];
     
@@ -58,7 +57,7 @@
 
 -(UITableView *) createTable
 {
-    CGRect navigationViewSizeModifiedHeight = CGRectMake(self.navigationController.view.frame.origin.x, self.navigationController.view.frame.origin.y, self.navigationController.view.frame.size.width, self.navigationController.view.frame.size.height-labelWidth);
+    CGRect navigationViewSizeModifiedHeight = CGRectMake(self.navigationController.view.frame.origin.x, self.navigationController.view.frame.origin.y, self.navigationController.view.frame.size.width, self.navigationController.view.frame.size.height);
     UITableView *createdTable = [[UITableView alloc] initWithFrame:navigationViewSizeModifiedHeight style:UITableViewStylePlain];
     createdTable.backgroundColor = [UIColor colorWithRed:1.0 green:160/255.f blue:50/255.f alpha:1.0];
     createdTable.separatorColor = [UIColor blackColor];
@@ -81,6 +80,10 @@
 
 }
 
+
+
+
+
 # pragma mark Table Protocols
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
@@ -90,7 +93,6 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-//    return [newsPapers count];
     return 5;
 }
 
@@ -111,7 +113,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [tableView d]
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    
 
 }
 
@@ -120,6 +123,11 @@
     //    NSURL *urlString = [NSURL URLWithString:@""];
     
 }
+
+
+
+
+
 
 
 # pragma mark Navigation Customization
