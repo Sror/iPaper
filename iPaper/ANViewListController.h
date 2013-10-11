@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ANViewListController : UIViewController
+@interface ANViewListController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+
+@property (copy, nonatomic) NSString *selectedNewsCategory;
+@property (strong, nonatomic) UITableView *table;
 
 @end

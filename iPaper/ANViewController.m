@@ -15,6 +15,7 @@
 @interface ANViewController ()
 {
     NSMutableArray *newsPapers;
+    NSArray *rowTextItem;
 }
 
 @end
@@ -33,12 +34,13 @@
     return self;
 }
 
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
     self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:240/255.f green:240/255.f blue:240/255.f alpha:1.0];
-    self.navigationItem.titleView = [self navigationTitleView];
+    self.navigationItem.titleView = [self navigationTitleView];    
     
     self.table = [self createTable];
     
@@ -61,7 +63,7 @@
     UITableView *createdTable = [[UITableView alloc] initWithFrame:navigationViewSizeModifiedHeight style:UITableViewStylePlain];
     createdTable.backgroundColor = [UIColor colorWithRed:1.0 green:160/255.f blue:50/255.f alpha:1.0];
     createdTable.separatorColor = [UIColor blackColor];
-    createdTable.separatorInset = UIEdgeInsetsMake(0, 15, 0, 15);   
+    createdTable.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
     
     createdTable.dataSource = self;
     createdTable.delegate = self;
@@ -76,7 +78,9 @@
 {
 //    self.navigationItem.titleView = [self navigationTitleViewAddRSS];
     ANRssFeed *feed = [[ANRssFeed alloc] init];
-    [feed parseFeed:@"http://syndication.indianexpress.com/rss/723/sunday-stories.xml"];
+    [feed parseFeed:@"http://www.indianexpress.com/news/iran-has-more-uranium-than-it-needs-speaker/1180677/"];
+//    http://feeds.bbci.co.uk/news/rss.xml?edition=int
+//    http://syndication.indianexpress.com/rss/723/sunday-stories.xml
 
 }
 
@@ -99,7 +103,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *cellIdentifier = @"NewsCell";
-    NSArray *rowTextItem = [NSArray arrayWithObjects:@"Latest News", @"International", @"World News", @"Front Page", @"Express Opinion", nil];
+    rowTextItem = [NSArray arrayWithObjects:@"Latest News", @"International", @"World News", @"Front Page", @"Express Opinion", nil];
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (!cell) {
@@ -115,7 +119,9 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     
-
+    ANViewListController *listView = [[ANViewListController alloc] init];
+    listView.selectedNewsCategory = [rowTextItem objectAtIndex:indexPath.row];
+    [self.navigationController pushViewController:listView animated:YES];    
 }
 
 -(void) getRSSFeed
@@ -123,10 +129,6 @@
     //    NSURL *urlString = [NSURL URLWithString:@""];
     
 }
-
-
-
-
 
 
 

@@ -29,9 +29,7 @@
     [parser setShouldResolveExternalEntities:NO];
     [parser parse];
     
-    
-    
-    return NULL;
+    return newsTable;
 }
 
 #pragma mark Parser Protocols
