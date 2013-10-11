@@ -47,11 +47,11 @@
     element = elementName;
     
     if([element isEqualToString:@"item"]) {
-        flag = YES;
+        flag = YES;                    // It tells whether the element: "item" has started or not.
     }
     if(!newsTableAttributes && ([element isEqualToString:@"title"] | [element isEqualToString:@"link"] | [element isEqualToString:@"description"])) {
         newsTableAttributes = [[NSMutableDictionary alloc] init];
-        setArrayObjectFlag = 0;
+        setArrayObjectFlag = 0;       // It sets the Dictionary as an object to Array when all 3 elements(Key in terms of Dictionary): "title", "link", "description" are set.
     }
     
 }
@@ -82,16 +82,17 @@
     if([element isEqualToString:@"item"])
         flag = NO;
     
-    if([element isEqualToString:@"title"] | [element isEqualToString:@"link"] | [element isEqualToString:@"description"]) {
+    if(flag && [element isEqualToString:@"title"] | [element isEqualToString:@"link"] | [element isEqualToString:@"description"]) {
         
         setArrayObjectFlag ++;
+        
         if(setArrayObjectFlag == 3) {
             [newsTable addObject:newsTableAttributes];
             newsTableAttributes = NULL;
         }
     }
 
-    element = nil;
+    element = nil;           // b'coz <item><title> Lorem Ipsum </title> Lorem Ipsum </item> ... Even when didEndElement: called after title  ends, var(element) still contains "title" instead of "item".
 }
 
 

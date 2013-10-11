@@ -21,16 +21,25 @@
 
 @implementation ANViewController
 
+-(id) init {
+
+    self = [super init];
+    
+    if(!self) {
+        return nil;
+    }
+    
+    self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Indian Express" image:[UIImage imageNamed:@"newsPaper"] selectedImage:nil];    
+    return self;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Indian Express" image:[UIImage imageNamed:@"newsPaper"] selectedImage:nil];
-    
-    
     self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:240/255.f green:240/255.f blue:240/255.f alpha:1.0];
     self.navigationItem.titleView = [self navigationTitleView];
-    self.navigationController.toolbarHidden = YES;
+//  self.navigationController.toolbarHidden = YES;
     
     self.table = [self createTable];
     
@@ -50,10 +59,14 @@
 -(UITableView *) createTable
 {
     CGRect navigationViewSizeModifiedHeight = CGRectMake(self.navigationController.view.frame.origin.x, self.navigationController.view.frame.origin.y, self.navigationController.view.frame.size.width, self.navigationController.view.frame.size.height-labelWidth);
-    UITableView *createdTable = [[UITableView alloc] initWithFrame:navigationViewSizeModifiedHeight];
+    UITableView *createdTable = [[UITableView alloc] initWithFrame:navigationViewSizeModifiedHeight style:UITableViewStylePlain];
     createdTable.backgroundColor = [UIColor colorWithRed:1.0 green:160/255.f blue:50/255.f alpha:1.0];
     createdTable.separatorColor = [UIColor blackColor];
+    createdTable.separatorInset = UIEdgeInsetsMake(0, 15, 0, 15);   
     
+    createdTable.dataSource = self;
+    createdTable.delegate = self;
+
     return createdTable;
 }
 
@@ -65,23 +78,41 @@
 //    self.navigationItem.titleView = [self navigationTitleViewAddRSS];
     ANRssFeed *feed = [[ANRssFeed alloc] init];
     [feed parseFeed:@"http://syndication.indianexpress.com/rss/723/sunday-stories.xml"];
-//http://www.thehindu.com/news/international/world/?service=rss
-//    http://syndication.indianexpress.com/rss/latest-news.xml
+
 }
 
 # pragma mark Table Protocols
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    return [newsPapers count];
+    return @"Indian Express";
 }
 
-// Row display. Implementers should *always* try to reuse cells by setting each cell's reuseIdentifier and querying for available reusable cells with dequeueReusableCellWithIdentifier:
-// Cell gets various attributes set automatically based on table (separators) and data source (accessory views, editing controls)
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+//    return [newsPapers count];
+    return 5;
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return NULL;
+    static NSString *cellIdentifier = @"NewsCell";
+    NSArray *rowTextItem = [NSArray arrayWithObjects:@"Latest News", @"International", @"World News", @"Front Page", @"Express Opinion", nil];
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+    }
+    
+    cell.textLabel.text = rowTextItem[indexPath.row];
+    cell.backgroundColor = [UIColor clearColor];
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView d]
+
 }
 
 -(void) getRSSFeed
@@ -102,7 +133,7 @@
     UIView *containerView = [[UIView alloc] initWithFrame:navigationBarSize];
     
     
-    UIImage *showToolBarImage = [UIImage imageNamed:@"showToolBarImage"];
+    UIImage *showToolBarImage = [UIImage imageNamed:@"rssLogo"];
     self.showToolBarButton = [UIButton buttonWithType:UIButtonTypeCustom];
     
        
@@ -123,18 +154,8 @@
     containerViewTitle.textAlignment = NSTextAlignmentCenter;
     
     
-    UIImage *rssLogo = [UIImage imageNamed:@"rssLogo"];
-    CGFloat imageViewY = (navBarHeight - rssLogo.size.height)/2;
-    CGFloat imageViewX = 0;
-    
-    UIImageView *rssLogoView = [[UIImageView alloc] initWithFrame:CGRectMake(imageViewX, imageViewY, buttonWidth, buttonHeight)];
-    [rssLogoView setImage:rssLogo];
-    
-    
     [containerView addSubview:self.showToolBarButton];
     [containerView addSubview:containerViewTitle];
-    [containerView addSubview:rssLogoView];
-    
     
     [self.showToolBarButton addTarget:self action:@selector(addRSS) forControlEvents:UIControlEventTouchUpInside];
     

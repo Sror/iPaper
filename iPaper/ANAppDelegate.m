@@ -28,6 +28,11 @@
     UINavigationController *entryPointAppII = [[UINavigationController alloc] initWithRootViewController:newsPaperIIViewController];
     
     self.tabBarController.viewControllers = [NSArray arrayWithObjects:entryPointApp, entryPointAppII, nil];
+    
+    [(UITabBarItem *)[self.tabBarController.tabBar.items objectAtIndex:1] setImage:[UIImage imageNamed:@"showToolBarImage"]];
+    [(UITabBarItem *)[self.tabBarController.tabBar.items objectAtIndex:1] setTitle:@"Next"];
+    
+    
     self.tabBarController.selectedViewController = entryPointApp;
     
     self.window.rootViewController = self.tabBarController;

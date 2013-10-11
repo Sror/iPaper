@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ANViewController : UIViewController
+@interface ANViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) UITableView *table;
 @property (strong, nonatomic) UIButton *showToolBarButton;
