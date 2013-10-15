@@ -77,6 +77,8 @@
 
 -(void) addRSS
 {
+    
+    
     self.navigationItem.titleView = [self navigationTitleViewAddRSS];
     ANRssFeed *feed = [[ANRssFeed alloc] init];
     [feed parseFeed:@"http://www.indianexpress.com/news/iran-has-more-uranium-than-it-needs-speaker/1180677/"];

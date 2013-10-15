@@ -22,9 +22,7 @@
 
 -(NSString *) parseFeed: (NSString *) stringUrl
 {
-    [self getHtmlData:stringUrl];
-    
-  
+    [self getHtmlData:stringUrl];  
     
     return 0;
 }
@@ -57,6 +55,15 @@
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
+//    NSLog(@"%@", responseData);
+    
+    NSString *content =
+    [[NSString alloc] initWithBytes:[responseData bytes]
+                             length:[responseData length]
+                           encoding:NSUTF8StringEncoding];
+    NSLog( @"Data = %@", content );
+    
+    
     parser = [[NSXMLParser alloc] initWithData:responseData];
     [parser setDelegate:self];
     [parser setShouldResolveExternalEntities:NO];
@@ -74,19 +81,19 @@
 {
     element = elementName;
     
-    NSLog(@"Element Starts: %@", elementName);
-    NSLog(@"Element Attribute Dict: %@", attributeDict);
+//    NSLog(@"Element Starts: %@", elementName);
+//    NSLog(@"Element Attribute Dict: %@", attributeDict);
 }
 
 - (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string
 {
-     NSLog(@"Data: %@", string);
+//     NSLog(@"Data: %@", string);
 }
 
 
 - (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName
 {
-    NSLog(@"Element Ends: %@", elementName);
+//    NSLog(@"Element Ends: %@", elementName);
 }
 
 
