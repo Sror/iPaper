@@ -77,16 +77,13 @@
 
 -(void) addRSS
 {
-//    self.navigationItem.titleView = [self navigationTitleViewAddRSS];
+    self.navigationItem.titleView = [self navigationTitleViewAddRSS];
     ANRssFeed *feed = [[ANRssFeed alloc] init];
     [feed parseFeed:@"http://www.indianexpress.com/news/iran-has-more-uranium-than-it-needs-speaker/1180677/"];
 //    http://feeds.bbci.co.uk/news/rss.xml?edition=int
 //    http://syndication.indianexpress.com/rss/723/sunday-stories.xml
 
 }
-
-
-
 
 
 # pragma mark Table Protocols
@@ -125,13 +122,6 @@
     [self.navigationController pushViewController:listView animated:YES];    
 }
 
--(void) getRSSFeed
-{
-    //    NSURL *urlString = [NSURL URLWithString:@""];
-    
-}
-
-
 
 # pragma mark Navigation Customization
 
@@ -143,10 +133,8 @@
     
     UIView *containerView = [[UIView alloc] initWithFrame:navigationBarSize];
     
-    
     UIImage *showToolBarImage = [UIImage imageNamed:@"rssLogo"];
     self.showToolBarButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    
        
     CGFloat buttonY = (navBarHeight - showToolBarImage.size.height)/2;
     CGFloat buttonX = navBarWidth - (showToolBarImage.size.width + buttonY*2);
@@ -162,8 +150,7 @@
     UILabel *containerViewTitle = [[UILabel alloc] initWithFrame:CGRectMake((navBarWidth/2) - (lWidth/2), (navBarHeight - lHeight)/2, lWidth, lHeight)];
     containerViewTitle.font = [UIFont fontWithName:@"Zapfino" size:14];
     containerViewTitle.text = kTitle;
-    containerViewTitle.textAlignment = NSTextAlignmentCenter;
-    
+    containerViewTitle.textAlignment = NSTextAlignmentCenter;    
     
     [containerView addSubview:self.showToolBarButton];
     [containerView addSubview:containerViewTitle];
@@ -194,7 +181,7 @@
     [containerView addSubview:addRssButton];
     
     
-    [addRssButton addTarget:self action:@selector(getRSSFeed) forControlEvents:UIControlEventTouchUpInside];
+    [addRssButton addTarget:self action:@selector(addRSS) forControlEvents:UIControlEventTouchUpInside];
     
     
     return containerView;

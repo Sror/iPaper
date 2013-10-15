@@ -8,6 +8,7 @@
 
 #import "ANViewListController.h"
 #import "ANRssFeed.h"
+#import "ANHtmlFeed.h"
 #import "ANViewDetailWebController.h"
 
 @interface ANViewListController ()
@@ -33,7 +34,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    self.title = self.selectedNewsCategory;    
+    self.title = self.selectedNewsCategory;
     self.table = [self createTable];
     
     arrayContainsDictionary = NO;
@@ -84,8 +85,7 @@
         }
     }
     
-    cell.backgroundColor = [UIColor clearColor];
-    
+    cell.backgroundColor = [UIColor clearColor];    
     
     if (arrayContainsDictionary) {
             cell.textLabel.text = [rowTextItem[indexPath.row] objectForKey:@"title"];
@@ -100,24 +100,26 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
     if(arrayContainsDictionary) {
         
-    
+        NSLog(@"Link: %@", [rowTextItem[indexPath.row] objectForKey:@"link"]);
+        ANHtmlFeed *feed = [[ANHtmlFeed alloc] init];
+        [feed parseFeed:[rowTextItem[indexPath.row] objectForKey:@"link"]];
     }
     else {
+            NSString *selectedSubCategory = [tableView cellForRowAtIndexPath:indexPath].textLabel.text;
     
-        [tableView deselectRowAtIndexPath:indexPath animated:YES];
-        NSString *selectedSubCategory = [tableView cellForRowAtIndexPath:indexPath].textLabel.text;
-    
-        rowTextItem = [self getSubCategoryRowData:selectedSubCategory];
-        arrayContainsDictionary = YES;
-        self.title = selectedSubCategory;
-        [self.table reloadData];
+            rowTextItem = [self getSubCategoryRowData:selectedSubCategory];
+            arrayContainsDictionary = YES;
+            self.title = selectedSubCategory;
+            [self.table reloadData];
     }
-    
 }
 
 
+#pragma mark Rows' data well
 
 
 -(NSArray *) getRowData

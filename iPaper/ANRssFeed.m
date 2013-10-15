@@ -51,7 +51,6 @@
         newsTableAttributes = [[NSMutableDictionary alloc] init];
         setArrayObjectFlag = 0;       // It sets the Dictionary as an object to Array when all 3 elements(Key in terms of Dictionary): "title", "link", "description" are set.
     }
-    
 }
 
 - (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string
@@ -96,7 +95,7 @@
 
 - (void)parserDidEndDocument:(NSXMLParser *)parser
 {
-    NSLog(@"%@", newsTable);
+//    NSLog(@"%@", newsTable);
     
 }
 
