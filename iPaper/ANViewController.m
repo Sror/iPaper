@@ -40,6 +40,7 @@
     [super viewDidLoad];
     
     self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:240/255.f green:240/255.f blue:240/255.f alpha:1.0];
+    [self.navigationItem setBackBarButtonItem:[[UIBarButtonItem alloc] initWithTitle:@"iPaper" style:UIBarButtonItemStylePlain target:nil action:nil]];
     self.navigationItem.titleView = [self navigationTitleView];    
     
     self.table = [self createTable];

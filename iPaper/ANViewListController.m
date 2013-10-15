@@ -33,7 +33,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    self.title = self.selectedNewsCategory;
+    self.title = self.selectedNewsCategory;    
     self.table = [self createTable];
     
     arrayContainsDictionary = NO;
@@ -104,7 +104,16 @@
         
     
     }
+    else {
     
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        NSString *selectedSubCategory = [tableView cellForRowAtIndexPath:indexPath].textLabel.text;
+    
+        rowTextItem = [self getSubCategoryRowData:selectedSubCategory];
+        arrayContainsDictionary = YES;
+        self.title = selectedSubCategory;
+        [self.table reloadData];
+    }
     
 }
 
@@ -140,5 +149,114 @@
     return NULL;
 }
 
+
+-(NSArray *) getSubCategoryRowData:selectedSubCategory
+{
+    if ([self.selectedNewsCategory isEqualToString:@"Latest News"]) {
+        
+        if ([selectedSubCategory isEqualToString:@"Breaking News"]) {
+            ANRssFeed *feed = [[ANRssFeed alloc] init];
+            arrayContainsDictionary = YES;
+            return [feed parseFeed:@"http://syndication.indianexpress.com/rss/latest-news.xml"];
+        }
+        
+        if ([selectedSubCategory isEqualToString:@"India"]) {
+            ANRssFeed *feed = [[ANRssFeed alloc] init];
+            arrayContainsDictionary = YES;
+            return [feed parseFeed:@"http://syndication.indianexpress.com/rss/798/latest-news.xml"];
+        }
+        
+        if ([selectedSubCategory isEqualToString:@"World"]) {
+            ANRssFeed *feed = [[ANRssFeed alloc] init];
+            arrayContainsDictionary = YES;
+            return [feed parseFeed:@"http://syndication.indianexpress.com/rss/789/latest-news.xml"];
+        }
+        
+        if ([selectedSubCategory isEqualToString:@"Business"]) {
+            ANRssFeed *feed = [[ANRssFeed alloc] init];
+            arrayContainsDictionary = YES;
+            return [feed parseFeed:@"http://syndication.indianexpress.com/rss/797/latest-news.xml"];
+        }
+        
+        if ([selectedSubCategory isEqualToString:@"Sports"]) {
+            ANRssFeed *feed = [[ANRssFeed alloc] init];
+            arrayContainsDictionary = YES;
+            return [feed parseFeed:@"http://syndication.indianexpress.com/rss/785/latest-news.xml"];
+        }
+        
+        if ([selectedSubCategory isEqualToString:@"LifeStyle & Health"]) {
+            ANRssFeed *feed = [[ANRssFeed alloc] init];
+            arrayContainsDictionary = YES;
+            return [feed parseFeed:@"http://syndication.indianexpress.com/rss/802/latest-news.xml"];
+
+        }
+        
+    }
+    
+    if ([self.selectedNewsCategory isEqualToString:@"World News"]) {
+        
+        if ([selectedSubCategory isEqualToString:@"Asia"]) {
+            ANRssFeed *feed = [[ANRssFeed alloc] init];
+            arrayContainsDictionary = YES;
+            return [feed parseFeed:@"http://syndication.indianexpress.com/rss/790/asia.xml"];
+        }
+        
+        if ([selectedSubCategory isEqualToString:@"Europe"]) {
+            ANRssFeed *feed = [[ANRssFeed alloc] init];
+            arrayContainsDictionary = YES;
+            return [feed parseFeed:@"http://syndication.indianexpress.com/rss/788/europe.xml"];
+        }
+        
+        if ([selectedSubCategory isEqualToString:@"Middle East & Africa"]) {
+            ANRssFeed *feed = [[ANRssFeed alloc] init];
+            arrayContainsDictionary = YES;
+            return [feed parseFeed:@"http://syndication.indianexpress.com/rss/791/middle-east---africa.xml"];
+        }
+        
+        if ([selectedSubCategory isEqualToString:@"Americas"]) {
+            ANRssFeed *feed = [[ANRssFeed alloc] init];
+            arrayContainsDictionary = YES;
+            return [feed parseFeed:@"http://syndication.indianexpress.com/rss/787/americas.xml"];
+        }
+        
+    }
+    
+    if ([self.selectedNewsCategory isEqualToString:@"Express Opinion"]) {
+        
+        if ([selectedSubCategory isEqualToString:@"Editorial"]) {
+            ANRssFeed *feed = [[ANRssFeed alloc] init];
+            arrayContainsDictionary = YES;
+            return [feed parseFeed:@"http://syndication.indianexpress.com/rss/35/editorials.xml"];
+        }
+        
+        if ([selectedSubCategory isEqualToString:@"Editors' Picks"]) {
+            ANRssFeed *feed = [[ANRssFeed alloc] init];
+            arrayContainsDictionary = YES;
+            return [feed parseFeed:@"http://syndication.indianexpress.com/rss/1117/editors-picks.xml"];
+        }
+        
+        if ([selectedSubCategory isEqualToString:@"Columns"]) {
+            ANRssFeed *feed = [[ANRssFeed alloc] init];
+            arrayContainsDictionary = YES;
+            return [feed parseFeed:@"http://syndication.indianexpress.com/rss/43/columns.xml"];
+        }
+        
+        if ([selectedSubCategory isEqualToString:@"Express Columns"]) {
+            ANRssFeed *feed = [[ANRssFeed alloc] init];
+            arrayContainsDictionary = YES;
+            return [feed parseFeed:@"http://syndication.indianexpress.com/rss/1295/express-columns.xml"];
+        }
+        
+        if ([selectedSubCategory isEqualToString:@"OP-ED"]) {
+            ANRssFeed *feed = [[ANRssFeed alloc] init];
+            arrayContainsDictionary = YES;
+            return [feed parseFeed:@"http://syndication.indianexpress.com/rss/36/oped.xml"];
+        }
+        
+    }
+    
+    return NULL;
+
+}
 
 @end
