@@ -128,6 +128,7 @@
     rowTextItem = previousRowTextItem;
     arrayContainsDictionary = NO;
     self.title = self.selectedNewsCategory;
+    self.navigationItem.rightBarButtonItem = nil;
     
     [self.table reloadData];
 }
