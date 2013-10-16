@@ -25,9 +25,9 @@
 		299AAA2E18056D6600D63A9B /* ANRssFeed.m in Sources */ = {isa = PBXBuildFile; fileRef = 299AAA2D18056D6600D63A9B /* ANRssFeed.m */; };
 		29C6068E1806CA6700335ABF /* ANNewsPaperIIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 29C6068D1806CA6700335ABF /* ANNewsPaperIIViewController.m */; };
 		29C606901806D81D00335ABF /* newsPaper.png in Resources */ = {isa = PBXBuildFile; fileRef = 29C6068F1806D81D00335ABF /* newsPaper.png */; };
-		29E54D9A180D680F00A0E7E6 /* ANHtmlFeed.m in Sources */ = {isa = PBXBuildFile; fileRef = 29E54D99180D680F00A0E7E6 /* ANHtmlFeed.m */; };
 		29EDD20D180804E000C2E614 /* ANViewListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 29EDD20C180804E000C2E614 /* ANViewListController.m */; };
 		29EDD2101808359900C2E614 /* ANViewDetailWebController.m in Sources */ = {isa = PBXBuildFile; fileRef = 29EDD20F1808359900C2E614 /* ANViewDetailWebController.m */; };
+		29FC09E9180EBAB5009DCBA2 /* backToCategories.png in Resources */ = {isa = PBXBuildFile; fileRef = 29FC09E8180EBAB5009DCBA2 /* backToCategories.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,12 +66,13 @@
 		29C6068C1806CA6700335ABF /* ANNewsPaperIIViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANNewsPaperIIViewController.h; sourceTree = "<group>"; };
 		29C6068D1806CA6700335ABF /* ANNewsPaperIIViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANNewsPaperIIViewController.m; sourceTree = "<group>"; };
 		29C6068F1806D81D00335ABF /* newsPaper.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = newsPaper.png; sourceTree = "<group>"; };
-		29E54D98180D680F00A0E7E6 /* ANHtmlFeed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANHtmlFeed.h; sourceTree = "<group>"; };
-		29E54D99180D680F00A0E7E6 /* ANHtmlFeed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANHtmlFeed.m; sourceTree = "<group>"; };
 		29EDD20B180804E000C2E614 /* ANViewListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANViewListController.h; sourceTree = "<group>"; };
 		29EDD20C180804E000C2E614 /* ANViewListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANViewListController.m; sourceTree = "<group>"; };
 		29EDD20E1808359900C2E614 /* ANViewDetailWebController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANViewDetailWebController.h; sourceTree = "<group>"; };
 		29EDD20F1808359900C2E614 /* ANViewDetailWebController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANViewDetailWebController.m; sourceTree = "<group>"; };
+		29FC09E4180E76D0009DCBA2 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
+		29FC09E6180E7A34009DCBA2 /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
+		29FC09E8180EBAB5009DCBA2 /* backToCategories.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backToCategories.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +121,8 @@
 		29901D4B1805528F00E51789 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				29FC09E6180E7A34009DCBA2 /* libxml2.2.dylib */,
+				29FC09E4180E76D0009DCBA2 /* libxml2.dylib */,
 				29901D4C1805528F00E51789 /* Foundation.framework */,
 				29901D4E1805528F00E51789 /* CoreGraphics.framework */,
 				29901D501805528F00E51789 /* UIKit.framework */,
@@ -152,6 +155,7 @@
 		29901D531805528F00E51789 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				29FC09E8180EBAB5009DCBA2 /* backToCategories.png */,
 				29C6068F1806D81D00335ABF /* newsPaper.png */,
 				29901D821805538200E51789 /* rssLogo.png */,
 				29901D541805528F00E51789 /* iPaper-Info.plist */,
@@ -185,8 +189,6 @@
 			children = (
 				299AAA2C18056D6600D63A9B /* ANRssFeed.h */,
 				299AAA2D18056D6600D63A9B /* ANRssFeed.m */,
-				29E54D98180D680F00A0E7E6 /* ANHtmlFeed.h */,
-				29E54D99180D680F00A0E7E6 /* ANHtmlFeed.m */,
 			);
 			name = "Parser ;)";
 			sourceTree = "<group>";
@@ -268,6 +270,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29FC09E9180EBAB5009DCBA2 /* backToCategories.png in Resources */,
 				29901D841805538200E51789 /* rssLogo.png in Resources */,
 				29901D651805528F00E51789 /* Images.xcassets in Resources */,
 				29901D571805528F00E51789 /* InfoPlist.strings in Resources */,
@@ -298,7 +301,6 @@
 				29EDD20D180804E000C2E614 /* ANViewListController.m in Sources */,
 				29901D5D1805528F00E51789 /* ANAppDelegate.m in Sources */,
 				29C6068E1806CA6700335ABF /* ANNewsPaperIIViewController.m in Sources */,
-				29E54D9A180D680F00A0E7E6 /* ANHtmlFeed.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -427,6 +429,12 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iPaper/iPaper-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"<Multiple",
+					"values>",
+					"$(SDKROOT)/usr/include/libxml2",
+				);
+				"HEADER_SEARCH_PATHS[arch=*]" = "$(SDKROOT)/usr/include/libxml2";
 				INFOPLIST_FILE = "iPaper/iPaper-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -440,6 +448,12 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iPaper/iPaper-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"<Multiple",
+					"values>",
+					"$(SDKROOT)/usr/include/libxml2",
+				);
+				"HEADER_SEARCH_PATHS[arch=*]" = "$(SDKROOT)/usr/include/libxml2";
 				INFOPLIST_FILE = "iPaper/iPaper-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;

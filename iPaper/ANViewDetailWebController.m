@@ -14,19 +14,34 @@
 
 @implementation ANViewDetailWebController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
+-(id) init {
+    
+    self = [super init];
+    
+    if(!self) {
+        return nil;
     }
+    
     return self;
 }
+
+//-(void)viewWillAppear: (BOOL)animated
+//{
+//    [super viewWillAppear:animated];
+//    [self.tabBarController.tabBar setHidden:YES];
+//}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+	// Do any additional setup after loading the view. 
+    
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:self.pageUrl]];
+    CGRect frame = CGRectMake(self.navigationController.view.frame.origin.x, self.navigationController.view.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height);
+    UIWebView *showPage = [[UIWebView alloc] initWithFrame:frame];
+    [self.view addSubview:showPage];
+    
+    [showPage loadRequest:request];
 }
 
 - (void)didReceiveMemoryWarning

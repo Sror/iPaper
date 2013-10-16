@@ -41,10 +41,9 @@
     
     self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:240/255.f green:240/255.f blue:240/255.f alpha:1.0];
     [self.navigationItem setBackBarButtonItem:[[UIBarButtonItem alloc] initWithTitle:@"iPaper" style:UIBarButtonItemStylePlain target:nil action:nil]];
-    self.navigationItem.titleView = [self navigationTitleView];    
+    self.navigationItem.titleView = [self navigationTitleView];
     
-    self.table = [self createTable];
-    
+    self.table = [self createTable];    
     [self.view addSubview:self.table];
 }
 
@@ -62,6 +61,7 @@
 {
     CGRect navigationViewSizeModifiedHeight = CGRectMake(self.navigationController.view.frame.origin.x, self.navigationController.view.frame.origin.y, self.navigationController.view.frame.size.width, self.navigationController.view.frame.size.height);
     UITableView *createdTable = [[UITableView alloc] initWithFrame:navigationViewSizeModifiedHeight style:UITableViewStylePlain];
+    
     createdTable.backgroundColor = [UIColor colorWithRed:1.0 green:160/255.f blue:50/255.f alpha:1.0];
     createdTable.separatorColor = [UIColor blackColor];
     createdTable.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
@@ -77,9 +77,9 @@
 
 -(void) addRSS
 {
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
     
-    
-    self.navigationItem.titleView = [self navigationTitleViewAddRSS];
+//    self.navigationItem.titleView = [self navigationTitleViewAddRSS];
     ANRssFeed *feed = [[ANRssFeed alloc] init];
     [feed parseFeed:@"http://www.indianexpress.com/news/iran-has-more-uranium-than-it-needs-speaker/1180677/"];
 //    http://feeds.bbci.co.uk/news/rss.xml?edition=int

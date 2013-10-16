@@ -17,12 +17,12 @@
     // Override point for customization after application launch.
     
     self.tabBarController = [[UITabBarController alloc] init];
-    self.tabBarController.tabBar.barTintColor = [UIColor blackColor];
+    self.tabBarController.tabBar.barTintColor = [UIColor colorWithRed:240/255.f green:240/255.f blue:240/255.f alpha:1.0];
     
     
     ANViewController *rootViewController = [[ANViewController alloc] init];
     UINavigationController *entryPointApp = [[UINavigationController alloc] initWithRootViewController:rootViewController];
-    entryPointApp.navigationBar.backgroundColor = [UIColor colorWithRed:0.95 green:0.45 blue:0.56 alpha:1.0];
+   
     
     ANNewsPaperIIViewController *newsPaperIIViewController = [[ANNewsPaperIIViewController alloc] init];
     UINavigationController *entryPointAppII = [[UINavigationController alloc] initWithRootViewController:newsPaperIIViewController];
@@ -31,7 +31,7 @@
     self.tabBarController.selectedViewController = entryPointApp;
     
     self.window.rootViewController = self.tabBarController;
-    self.window.tintColor = [UIColor whiteColor];
+    self.window.tintColor = [UIColor blackColor];
     
     [self.window makeKeyAndVisible];
     return YES;

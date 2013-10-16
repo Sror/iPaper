@@ -8,12 +8,12 @@
 
 #import "ANViewListController.h"
 #import "ANRssFeed.h"
-#import "ANHtmlFeed.h"
 #import "ANViewDetailWebController.h"
 
 @interface ANViewListController ()
 {
     NSArray *rowTextItem;
+    NSArray *previousRowTextItem;
     BOOL arrayContainsDictionary;
 }
 
@@ -93,6 +93,7 @@
     }
     else {
             cell.textLabel.text = rowTextItem[indexPath.row];
+            cell.detailTextLabel.text = nil;
     }
     
     return cell;
@@ -103,19 +104,55 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     if(arrayContainsDictionary) {
+        ANViewDetailWebController *loadNews = [[ANViewDetailWebController alloc] init];
+        loadNews.pageUrl = [rowTextItem[indexPath.row] objectForKey:@"link"];
         
-        NSLog(@"Link: %@", [rowTextItem[indexPath.row] objectForKey:@"link"]);
-        ANHtmlFeed *feed = [[ANHtmlFeed alloc] init];
-        [feed parseFeed:[rowTextItem[indexPath.row] objectForKey:@"link"]];
+        [self.navigationController pushViewController:loadNews animated:YES];
     }
     else {
             NSString *selectedSubCategory = [tableView cellForRowAtIndexPath:indexPath].textLabel.text;
-    
+        
+            previousRowTextItem = rowTextItem;
             rowTextItem = [self getSubCategoryRowData:selectedSubCategory];
             arrayContainsDictionary = YES;
             self.title = selectedSubCategory;
+            self.navigationItem.rightBarButtonItem = [self addBackButtonForSubCategories];
+        
             [self.table reloadData];
     }
+}
+
+
+-(void) backToCategories
+{
+    rowTextItem = previousRowTextItem;
+    arrayContainsDictionary = NO;
+    self.title = self.selectedNewsCategory;
+    
+    [self.table reloadData];
+}
+
+-(UIBarButtonItem *) addBackButtonForSubCategories
+{
+    UIImage *backToSubCategoriesImage = [UIImage imageNamed:@"backToCategories"];
+    UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    
+    
+    CGFloat buttonWidth = backToSubCategoriesImage.size.width;
+    CGFloat buttonHeight = backToSubCategoriesImage.size.height;
+    [backButton setFrame:CGRectMake(0, 0, buttonWidth, buttonHeight)];
+    [backButton setImage:backToSubCategoriesImage forState:UIControlStateNormal];
+    
+    [backButton addTarget:self action:@selector(backToCategories) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIView *containerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, buttonWidth, buttonHeight)];
+    [containerView addSubview:backButton];
+    
+    UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] initWithCustomView:containerView];
+    
+    
+    
+    return barButtonItem;
 }
 
 

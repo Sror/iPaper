@@ -10,4 +10,6 @@
 
 @interface ANViewDetailWebController : UIViewController
 
+@property (weak, nonatomic) UIWebView *showPage;
+@property (copy, nonatomic) NSString *pageUrl;
 @end
